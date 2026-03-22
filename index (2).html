@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Histoire de France — Un Voyage à Travers les Siècles</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{background:#FFFDF7;color:#1a1714;font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,253,247,.97);backdrop-filter:blur(16px);border-bottom:2px solid #1a1714;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;gap:1rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:.92rem;color:#1a1714;white-space:nowrap}
+.nav-logo em{color:#c8472b;font-style:italic}
+.nav-links{display:flex;flex-wrap:wrap}
+.nav-links a{color:#6b6560;text-decoration:none;font-size:.6rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;padding:.5rem .8rem;border-left:1px solid rgba(26,23,20,.1);transition:background .2s,color .2s;white-space:nowrap}
+.nav-links a:last-child{border-right:1px solid rgba(26,23,20,.1)}
+.nav-links a:hover{background:#1a1714;color:#fffdf7}
+
+.hero{min-height:100vh;background:#1a1714;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden}
+.hero-l{display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 3.5rem 5rem;z-index:2}
+.ey{font-size:.62rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#c8472b;margin-bottom:1.5rem}
+.htitle{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5.2vw,4.8rem);font-weight:900;line-height:.97;color:#fffdf7;margin-bottom:1.4rem}
+.htitle em{font-style:italic;color:#c8472b}
+.hdesc{font-size:.95rem;line-height:1.82;color:rgba(255,253,247,.5);max-width:420px;margin-bottom:2.5rem}
+.hstats{display:flex;gap:2rem;flex-wrap:wrap}
+.hs-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:#fffdf7;line-height:1}
+.hs-l{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.36);margin-top:.2rem}
+.hero-r{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:2rem}
+.hero-r::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 55% 45%,rgba(200,71,43,.14),transparent 60%)}
+
+.sec{padding:5rem 2.5rem}
+.inner{max-width:1100px;margin:0 auto}
+.kicker{font-size:.62rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:#c8472b;margin-bottom:.5rem}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.8vw,2.9rem);font-weight:700;line-height:1.08;color:#1a1714;margin-bottom:1rem}
+.stitle em{font-style:italic;color:#c8472b}
+.slead{font-size:.97rem;line-height:1.85;color:#6b6560;max-width:700px;font-weight:300;margin-bottom:0}
+
+.chap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;align-items:start}
+.chap.flip .vis-col{order:2}
+.chap.flip .txt-col{order:1}
+.txt-col p{font-size:.93rem;line-height:1.9;color:#6b6560;font-weight:300}
+.txt-col p+p{margin-top:.9rem}
+.txt-col h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#1a1714;margin:1.6rem 0 .5rem}
+.pull{border-left:3px solid #c8472b;padding:.75rem 1.1rem;margin:1.4rem 0;background:rgba(200,71,43,.04)}
+.pull p{font-size:.87rem;line-height:1.75;color:#1a1714;font-style:italic}
+.vis-col{border:2px solid #1a1714;border-radius:3px;overflow:hidden;background:#f7f3ee}
+.vis-col svg{width:100%;display:block}
+
+.chap-divider{background:#1a1714;padding:1rem 2.5rem;display:flex;align-items:center;gap:1.5rem}
+.cd-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:rgba(255,253,247,.08);line-height:1;flex-shrink:0}
+.cd-line{flex:1;height:1px;background:rgba(255,253,247,.12)}
+.cd-era{font-size:.6rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,253,247,.3)}
+
+.facts-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid #1a1714;margin-top:2.5rem}
+.fs-item{padding:1.6rem;border-right:1px solid rgba(26,23,20,.12);transition:background .2s}
+.fs-item:last-child{border-right:none}
+.fs-item:hover{background:rgba(200,71,43,.05)}
+.fs-tag{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#b89a5a;margin-bottom:.4rem}
+.fs-title{font-size:.88rem;font-weight:500;color:#1a1714;margin-bottom:.3rem}
+.fs-body{font-size:.8rem;line-height:1.7;color:#6b6560}
+
+.qband{background:#c8472b;border-top:2px solid #1a1714;border-bottom:2px solid #1a1714;padding:4.5rem 2.5rem;text-align:center}
+.qmark{font-family:'Playfair Display',serif;font-size:4rem;color:rgba(255,253,247,.18);line-height:.5;display:block;margin-bottom:1.3rem}
+.qtxt{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-style:italic;color:#fffdf7;line-height:1.5;max-width:760px;margin:0 auto 1.2rem}
+.qcite{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,253,247,.52)}
+
+.dband{background:#1a1714;padding:3.5rem 2.5rem;border-top:2px solid #1a1714;border-bottom:2px solid #1a1714}
+.dband-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#2e2a26}
+.dc{background:#1a1714;padding:2rem;transition:background .25s}
+.dc:hover{background:#221e1a}
+.dc-tag{font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,253,247,.28);margin-bottom:.5rem}
+.dc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fffdf7;margin-bottom:.45rem}
+.dc-body{font-size:.8rem;line-height:1.65;color:rgba(255,253,247,.42)}
+
+#chronologie{background:#f7f3ee;border-bottom:2px solid #1a1714}
+.tlt{display:grid;grid-template-columns:1fr 1fr;border:2px solid #1a1714;margin-top:3rem}
+.tc{padding:1.6rem;border-right:1px solid rgba(26,23,20,.12);border-bottom:1px solid rgba(26,23,20,.12);transition:background .2s;position:relative;overflow:hidden}
+.tc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.tc:nth-child(2n){border-right:none}
+.tc:nth-last-child(-n+2){border-bottom:none}
+.tc:hover{background:rgba(200,71,43,.05)}
+.ty{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;font-style:italic;color:#c8472b;line-height:1;margin-bottom:.1rem;margin-top:.18rem}
+.te{font-size:.57rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#b89a5a;margin-bottom:.45rem}
+.tt{font-size:.86rem;font-weight:500;color:#1a1714;margin-bottom:.32rem}
+.tb{font-size:.8rem;line-height:1.7;color:#6b6560}
+
+#culture .cult-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid #1a1714;margin-top:3rem}
+.cc{padding:1.8rem;border-right:1px solid rgba(26,23,20,.14);border-bottom:1px solid rgba(26,23,20,.14);background:#FFFDF7;transition:background .2s,transform .2s}
+.cc:nth-child(3n){border-right:none}
+.cc:nth-child(4),.cc:nth-child(5),.cc:nth-child(6){border-bottom:none}
+.cc:hover{background:#1a1714;transform:translate(-2px,-2px);z-index:2;box-shadow:3px 3px 0 #1a1714}
+.cc:hover .cc-title,.cc:hover .cc-body{color:#fffdf7}
+.cc-icon{font-size:1.5rem;margin-bottom:.7rem;line-height:1}
+.cc-title{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#1a1714;margin-bottom:.35rem;transition:color .2s}
+.cc-body{font-size:.82rem;line-height:1.65;color:#6b6560;transition:color .2s}
+
+.thinkers{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:2px solid #1a1714;margin-top:2.5rem}
+.tk{padding:1.4rem 1rem;border-right:1px solid rgba(26,23,20,.12);text-align:center;transition:background .2s}
+.tk:last-child{border-right:none}
+.tk:hover{background:#f7f3ee}
+.tk-icon{font-size:1.4rem;margin-bottom:.5rem}
+.tk-name{font-family:'Playfair Display',serif;font-size:.8rem;font-weight:700;color:#1a1714;margin-bottom:.2rem}
+.tk-sub{font-size:.68rem;color:#8a7f74;line-height:1.4}
+
+#conclusion{background:#f7f3ee;border-bottom:2px solid #1a1714}
+.conc-grid{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid #1a1714;margin-top:3rem}
+.cg{padding:2.2rem 1.5rem;border-right:2px solid #1a1714;text-align:center;cursor:default;transition:background .2s,transform .15s}
+.cg:last-child{border-right:none}
+.cg:hover{background:#c8472b;transform:translateY(-3px)}
+.cg:hover .cg-n,.cg:hover .cg-l{color:#fffdf7}
+.cg-n{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:#1a1714;line-height:1;margin-bottom:.4rem;transition:color .2s}
+.cg-l{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6b6560;line-height:1.5;transition:color .2s}
+
+footer{background:#1a1714;padding:4.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.fttl{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;color:#fffdf7;line-height:1.15}
+.fttl em{font-style:italic;color:#c8472b}
+.fright{text-align:right}
+.fright p{font-size:.72rem;color:rgba(255,253,247,.28);line-height:1.85;letter-spacing:.05em}
+.fright strong{color:#b89a5a;font-weight:400}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}.hero-r{display:none}
+  .hero-l{padding:6rem 1.8rem 4rem}
+  .chap,.chap.flip{grid-template-columns:1fr}
+  .chap.flip .vis-col,.chap.flip .txt-col{order:unset}
+  .tlt{grid-template-columns:1fr}
+  .tc:nth-child(2n){border-right:none}
+  .tc:nth-last-child(-n+2){border-bottom:1px solid rgba(26,23,20,.12)}
+  .tc:last-child{border-bottom:none}
+  .facts-strip{grid-template-columns:1fr}
+  .fs-item{border-right:none;border-bottom:1px solid rgba(26,23,20,.1)}
+  .fs-item:last-child{border-bottom:none}
+  .dband-inner{grid-template-columns:1fr}
+  #culture .cult-grid{grid-template-columns:1fr}
+  .cc:nth-child(3n){border-right:none}.cc{border-right:none}
+  .cc:nth-child(4),.cc:nth-child(5){border-bottom:1px solid rgba(26,23,20,.12)}
+  .thinkers{grid-template-columns:repeat(3,1fr)}
+  .tk:nth-child(3n){border-right:none}
+  .conc-grid{grid-template-columns:1fr 1fr}
+  .cg:nth-child(2){border-right:none}
+  .cg:nth-child(3){border-top:2px solid #1a1714;border-right:2px solid #1a1714}
+  .cg:nth-child(4){border-top:2px solid #1a1714;border-right:none}
+  footer{grid-template-columns:1fr}.fright{text-align:left}
+  .nav{padding:.8rem 1.2rem}
+  .nav-links a{padding:.48rem .6rem;font-size:.57rem}
+  .sec{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Histoire de la <em>France</em></div>
+  <div class="nav-links">
+    <a href="#medieval">Médiéval</a>
+    <a href="#renaissance">Renaissance</a>
+    <a href="#revolution">Révolution</a>
+    <a href="#nineteenth">XIXe Siècle</a>
+    <a href="#worldwars">Guerres Mondiales</a>
+    <a href="#contemporary">Contemporain</a>
+    <a href="#culture">Culture</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-l">
+    <p class="ey">Une Présentation de Séminaire</p>
+    <h1 class="htitle">Histoire de la <em>France</em><br>Un Voyage à Travers<br>les Siècles</h1>
+    <p class="hdesc">Du royaume franc et de la monarchie absolue à la révolution, aux guerres mondiales et à la démocratie moderne — l'histoire de France est un récit de résilience, de transformation et d'innovation extraordinaire qui a façonné le monde entier.</p>
+    <div class="hstats">
+      <div><div class="hs-n">2 000+</div><div class="hs-l">Ans d'histoire</div></div>
+      <div><div class="hs-n">6</div><div class="hs-l">Grandes époques</div></div>
+      <div><div class="hs-n">1789</div><div class="hs-l">La Révolution qui changea le monde</div></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <svg viewBox="0 0 340 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;max-height:88vh">
+      <circle cx="60" cy="40" r="1.3" fill="rgba(255,253,247,.5)"/>
+      <circle cx="130" cy="22" r=".9" fill="rgba(255,253,247,.4)"/>
+      <circle cx="240" cy="30" r="1.2" fill="rgba(255,253,247,.45)"/>
+      <circle cx="310" cy="80" r=".8" fill="rgba(255,253,247,.35)"/>
+      <circle cx="20" cy="90" r="1" fill="rgba(255,253,247,.3)"/>
+      <circle cx="310" cy="140" r="1.1" fill="rgba(255,253,247,.38)"/>
+      <circle cx="50" cy="160" r=".8" fill="rgba(255,253,247,.28)"/>
+      <circle cx="285" cy="52" r="20" fill="rgba(255,253,247,.08)"/>
+      <circle cx="294" cy="45" r="18" fill="#1a1714"/>
+      <rect x="0" y="458" width="340" height="42" fill="rgba(255,253,247,.03)"/>
+      <ellipse cx="170" cy="472" rx="185" ry="22" fill="rgba(26,86,180,.12)"/>
+      <polygon points="58,460 100,318 170,316 170,316" fill="rgba(255,253,247,.6)"/>
+      <polygon points="282,460 240,318 170,316 170,316" fill="rgba(255,253,247,.5)"/>
+      <polygon points="100,318 125,318 170,316" fill="rgba(0,0,0,.1)"/>
+      <line x1="70" y1="418" x2="148" y2="368" stroke="rgba(255,253,247,.15)" stroke-width="1.5"/>
+      <line x1="270" y1="418" x2="192" y2="368" stroke="rgba(255,253,247,.15)" stroke-width="1.5"/>
+      <line x1="62" y1="444" x2="152" y2="388" stroke="rgba(255,253,247,.1)" stroke-width="1"/>
+      <line x1="278" y1="444" x2="188" y2="388" stroke="rgba(255,253,247,.1)" stroke-width="1"/>
+      <rect x="92" y="306" width="156" height="14" rx="2" fill="rgba(255,253,247,.72)"/>
+      <path d="M95 320 Q116 302 137 320" fill="none" stroke="rgba(255,253,247,.28)" stroke-width="1.2"/>
+      <path d="M203 320 Q224 302 245 320" fill="none" stroke="rgba(255,253,247,.28)" stroke-width="1.2"/>
+      <polygon points="106,306 136,224 170,221 204,224 234,306" fill="rgba(255,253,247,.64)"/>
+      <line x1="116" y1="280" x2="148" y2="240" stroke="rgba(0,0,0,.13)" stroke-width="1.3"/>
+      <line x1="224" y1="280" x2="192" y2="240" stroke="rgba(0,0,0,.1)" stroke-width="1.2"/>
+      <rect x="128" y="213" width="84" height="12" rx="2" fill="rgba(255,253,247,.78)"/>
+      <rect x="140" y="216" width="6" height="5" rx="1" fill="rgba(200,71,43,.55)"/>
+      <rect x="156" y="216" width="6" height="5" rx="1" fill="rgba(200,71,43,.38)"/>
+      <rect x="174" y="216" width="6" height="5" rx="1" fill="rgba(200,71,43,.52)"/>
+      <rect x="190" y="216" width="6" height="5" rx="1" fill="rgba(200,71,43,.28)"/>
+      <polygon points="141,213 153,161 170,158 187,161 199,213" fill="rgba(255,253,247,.72)"/>
+      <rect x="150" y="152" width="40" height="11" rx="2" fill="rgba(255,253,247,.82)"/>
+      <polygon points="155,152 168,124 172,124 185,152" fill="rgba(255,253,247,.75)"/>
+      <rect x="167" y="114" width="6" height="13" rx="1" fill="rgba(255,253,247,.8)"/>
+      <line x1="170" y1="114" x2="170" y2="78" stroke="rgba(255,253,247,.7)" stroke-width="2"/>
+      <line x1="170" y1="78" x2="170" y2="62" stroke="rgba(255,253,247,.5)" stroke-width="1.5"/>
+      <circle cx="170" cy="60" r="2.5" fill="#c8472b"/>
+      <circle cx="170" cy="60" r="5.5" fill="#c8472b" opacity=".28"/>
+      <circle cx="170" cy="60" r="9" fill="#c8472b" opacity=".1"/>
+      <rect x="173" y="69" width="14" height="9" rx="1" fill="#002395"/>
+      <rect x="177.7" y="69" width="4.6" height="9" fill="#fff"/>
+      <rect x="182.3" y="69" width="4.7" height="9" fill="#ED2939"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ── CHAPITRE 1 ── -->
+<div class="chap-divider"><div class="cd-num">01</div><div class="cd-line"></div><div class="cd-era">500 – 1500 · La France Ancienne et Médiévale</div></div>
+
+<section class="sec" id="medieval" style="border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 1 · 500 – 1500</div>
+    <h2 class="stitle rv">La France Ancienne et Médiévale —<br><em>Les Origines du Royaume</em></h2>
+    <p class="slead rv">Après la chute de l'Empire romain, les Francs unifièrent la région et formèrent le premier Royaume de France — posant les fondations d'une civilisation qui allait façonner le monde occidental pour des siècles.</p>
+
+    <div class="chap">
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#e8dfc8"/>
+          <rect width="280" height="180" fill="#d4c9a8"/>
+          <rect y="180" width="280" height="170" fill="#c8b88a" opacity=".3"/>
+          <rect x="60" y="160" width="160" height="120" fill="#9a8c6a" stroke="#7a6c4a" stroke-width="1.5"/>
+          <line x1="60" y1="182" x2="220" y2="182" stroke="rgba(0,0,0,.1)" stroke-width=".8"/>
+          <line x1="60" y1="202" x2="220" y2="202" stroke="rgba(0,0,0,.1)" stroke-width=".8"/>
+          <line x1="60" y1="222" x2="220" y2="222" stroke="rgba(0,0,0,.1)" stroke-width=".8"/>
+          <line x1="60" y1="242" x2="220" y2="242" stroke="rgba(0,0,0,.1)" stroke-width=".8"/>
+          <rect x="110" y="90" width="60" height="80" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1.5"/>
+          <rect x="110" y="80" width="10" height="14" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="125" y="80" width="10" height="14" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="140" y="80" width="10" height="14" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="155" y="80" width="10" height="14" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="45" y="120" width="38" height="60" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1.5"/>
+          <rect x="45" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="57" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="69" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="197" y="120" width="38" height="60" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1.5"/>
+          <rect x="197" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="209" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="221" y="112" width="8" height="12" rx="1" fill="#8a7c5a" stroke="#6a5c3a" stroke-width="1"/>
+          <rect x="122" y="215" width="36" height="65" fill="#5a4a2a"/>
+          <path d="M122 215 Q140 198 158 215" fill="#5a4a2a"/>
+          <line x1="140" y1="108" x2="140" y2="125" stroke="#c8472b" stroke-width="2.5"/>
+          <line x1="133" y1="114" x2="147" y2="114" stroke="#c8472b" stroke-width="2.5"/>
+          <rect x="118" y="130" width="10" height="14" rx="1" fill="#5a4a2a"/>
+          <rect x="152" y="130" width="10" height="14" rx="1" fill="#5a4a2a"/>
+          <rect x="72" y="148" width="8" height="12" rx="1" fill="#5a4a2a"/>
+          <rect x="200" y="148" width="8" height="12" rx="1" fill="#5a4a2a"/>
+          <line x1="140" y1="72" x2="140" y2="55" stroke="#6a5c3a" stroke-width="1.5"/>
+          <polygon points="140,55 155,60 140,65" fill="#c8472b"/>
+          <text x="140" y="338" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".2em" fill="rgba(90,70,40,.48)">LA FRANCE MÉDIÉVALE · 500–1500</text>
+        </svg>
+      </div>
+
+      <div class="txt-col rv">
+        <h3>Le Royaume des Francs et Clovis Iᵉʳ</h3>
+        <p>Après la chute de l'Empire romain d'Occident en 476, la Gaule sombra dans l'instabilité. Parmi les peuples germaniques qui s'installèrent, les Francs — dirigés par <em>Clovis Iᵉʳ (vers 466–511)</em> — uniﬁèrent peu à peu les tribus sous leur autorité, faisant de Paris l'un des centres politiques du royaume.</p>
+        <p>La conversion de Clovis au christianisme vers 496, après sa victoire à Tolbiac, fut un tournant décisif. En se faisant baptiser par l'évêque Rémi de Reims, il s'assura le soutien puissant de l'Église catholique — créant une alliance durable entre monarchie et religion qui allait définir l'identité française pendant plus d'un millénaire.</p>
+        <h3>Charlemagne et l'Empire carolingien</h3>
+        <p>Après l'affaiblissement de la dynastie mérovingienne, <em>Charles Martel</em> arrêta l'expansion musulmane en Europe à la bataille de Poitiers (732). Son petit-fils <em>Charlemagne (742–814)</em> étendit l'empire à travers l'Europe occidentale. Couronné Empereur d'Occident par le pape Léon III à Rome en 800, son règne favorisa une renaissance intellectuelle et artistique : les monastères devinrent centres d'apprentissage, et les manuscrits antiques furent préservés.</p>
+        <h3>Le Féodalisme, l'Église et la Guerre de Cent Ans</h3>
+        <p>Le Moyen Âge vit l'émergence du système féodal — une société profondément hiérarchisée où les seigneurs locaux détenaient le pouvoir. L'Église dominait la vie spirituelle, sociale et culturelle, accumulant d'immenses richesses.</p>
+        <p>À partir du XIVᵉ siècle, la France traversa de profondes crises : famines, peste noire (1347–1352) et la <em>Guerre de Cent Ans (1337–1453)</em>. Ce conflit vit naître des figures légendaires, notamment <em>Jeanne d'Arc</em> — jeune paysanne inspirée par des visions divines — qui leva le siège d'Orléans en 1429 et redonna espoir à la nation, avant d'être brûlée vive à Rouen en 1431.</p>
+        <div class="pull"><p>« La Guerre de Cent Ans et les souffrances nationales forgèrent un sentiment national plus fort. Les rois Charles VII et Louis XI centralisèrent progressivement le pouvoir, affaiblissant la féodalité et posant les bases de la monarchie absolue. »</p></div>
+      </div>
+    </div>
+
+    <div class="facts-strip rv" style="margin-top:3rem">
+      <div class="fs-item"><div class="fs-tag">476 ap. J.-C.</div><div class="fs-title">Chute de Rome</div><div class="fs-body">L'Empire romain d'Occident s'effondre, laissant la Gaule ouverte à l'installation des Francs et à la naissance de la France.</div></div>
+      <div class="fs-item"><div class="fs-tag">800 ap. J.-C.</div><div class="fs-title">Charlemagne couronné Empereur</div><div class="fs-body">Le pape Léon III couronne Charlemagne à Rome — naissance symbolique d'une Europe chrétienne unie sous la direction française.</div></div>
+      <div class="fs-item"><div class="fs-tag">1431 ap. J.-C.</div><div class="fs-title">Jeanne d'Arc</div><div class="fs-body">Brûlée sur le bûcher par les Anglais à 19 ans. Canonisée des siècles plus tard. Elle demeure le symbole le plus puissant de l'identité nationale française.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHAPITRE 2 ── -->
+<div class="chap-divider"><div class="cd-num">02</div><div class="cd-line"></div><div class="cd-era">1500 – 1700 · La Renaissance et l'Âge Classique</div></div>
+
+<section class="sec" id="renaissance" style="background:#f7f3ee;border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 2 · 1500 – 1700</div>
+    <h2 class="stitle rv">La Renaissance et l'Âge Classique —<br><em>Art, Pouvoir et Monarchie Absolue</em></h2>
+    <p class="slead rv">La France s'ouvrit aux nouvelles idées en art, sciences et philosophie — devenant la plus grande puissance culturelle d'Europe sous le Roi Soleil — tandis que les guerres de religion déchiraient le royaume.</p>
+
+    <div class="chap flip">
+      <div class="txt-col rv">
+        <h3>François Iᵉʳ et la Renaissance</h3>
+        <p>Sous le règne de <em>François Iᵉʳ (1515–1547)</em>, la France s'ouvrit pleinement à la culture humaniste. Passionné par les arts et la connaissance, il fit venir à sa cour de nombreux artistes italiens, dont <em>Léonard de Vinci</em>, qui passa ses dernières années au château du Clos Lucé à Amboise. François Iᵉʳ encouragea également la diffusion de l'imprimerie et fonda le Collège de France, symbole de la liberté intellectuelle.</p>
+        <p>Cette époque vit l'essor d'une nouvelle manière de penser, fondée sur la raison, l'observation et la curiosité du monde — les marques distinctives de l'esprit de la Renaissance qui transforma la civilisation européenne.</p>
+        <h3>Les Guerres de Religion</h3>
+        <p>Mais cette époque de lumière fut assombrie par de terribles conflits religieux. À partir du milieu du XVIᵉ siècle, les tensions entre catholiques et protestants (huguenots) plongèrent le royaume dans des guerres civiles sanglantes. Le <em>massacre de la Saint-Barthélemy en 1572</em> — où des milliers de protestants furent tués à Paris et en province — marqua l'un des moments les plus tragiques de l'histoire de France.</p>
+        <p><em>Henri IV</em>, roi pragmatique et tolérant, mit fin aux conflits par l'<em>Édit de Nantes en 1598</em>, accordant aux protestants la liberté de culte dans certaines régions.</p>
+        <h3>Louis XIV — Le Roi Soleil</h3>
+        <p>Le XVIIᵉ siècle vit le pouvoir royal atteindre son apogée sous <em>Louis XIV (1643–1715)</em>. Déclarant « L'État, c'est moi », il centralisa toute l'autorité autour de sa personne. La construction du somptueux château de Versailles illustrait sa volonté de grandeur. Sous son règne, la France rayonna par ses écrivains (Molière, Racine, La Fontaine), ses peintres et ses architectes.</p>
+        <div class="pull"><p>« La France amorça également une vaste expansion coloniale — fondant Québec en 1608 sous Samuel de Champlain, et établissant des comptoirs commerciaux en Afrique et en Asie. »</p></div>
+      </div>
+
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#f5ead0"/>
+          <rect width="280" height="150" fill="#e8d5a8"/>
+          <g opacity=".32" stroke="#c8922b" stroke-width="1.2">
+            <line x1="140" y1="60" x2="140" y2="18"/>
+            <line x1="140" y1="60" x2="168" y2="28"/>
+            <line x1="140" y1="60" x2="188" y2="48"/>
+            <line x1="140" y1="60" x2="180" y2="74"/>
+            <line x1="140" y1="60" x2="112" y2="28"/>
+            <line x1="140" y1="60" x2="92" y2="48"/>
+            <line x1="140" y1="60" x2="100" y2="74"/>
+          </g>
+          <circle cx="140" cy="60" r="18" fill="#e8a820" opacity=".65"/>
+          <circle cx="140" cy="60" r="11" fill="#f5c842" opacity=".8"/>
+          <rect x="20" y="148" width="240" height="120" fill="#d4b882" stroke="#9a7840" stroke-width="1.5"/>
+          <rect x="20" y="140" width="240" height="12" fill="#c8a870" stroke="#9a7840" stroke-width="1"/>
+          <rect x="35" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="58" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="82" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="106" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="166" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="190" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="214" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="237" y="150" width="8" height="116" fill="#c8a870"/>
+          <rect x="118" y="200" width="44" height="68" fill="#5a4020"/>
+          <path d="M118 200 Q140 180 162 200" fill="#5a4020"/>
+          <rect x="42" y="165" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".6"/>
+          <rect x="68" y="165" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".6"/>
+          <rect x="174" y="165" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".6"/>
+          <rect x="200" y="165" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".6"/>
+          <rect x="42" y="200" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".45"/>
+          <rect x="68" y="200" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".45"/>
+          <rect x="174" y="200" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".45"/>
+          <rect x="200" y="200" width="16" height="22" rx="2" fill="#8ab0c8" opacity=".45"/>
+          <rect x="118" y="268" width="44" height="82" fill="#9a8055" opacity=".4"/>
+          <ellipse cx="80" cy="274" rx="22" ry="18" fill="#6a8a42" opacity=".7"/>
+          <ellipse cx="200" cy="274" rx="22" ry="18" fill="#6a8a42" opacity=".7"/>
+          <ellipse cx="55" cy="290" rx="16" ry="13" fill="#5a7a32" opacity=".65"/>
+          <ellipse cx="225" cy="290" rx="16" ry="13" fill="#5a7a32" opacity=".65"/>
+          <line x1="140" y1="138" x2="140" y2="118" stroke="#9a7840" stroke-width="1.5"/>
+          <rect x="140" y="118" width="5" height="9" fill="#002395"/>
+          <rect x="145" y="118" width="5" height="9" fill="#fff"/>
+          <rect x="150" y="118" width="5" height="9" fill="#ED2939"/>
+          <text x="140" y="340" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".18em" fill="rgba(90,70,30,.48)">CHÂTEAU DE VERSAILLES · 1682</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 1 -->
+<div class="qband">
+  <div style="max-width:800px;margin:0 auto" class="rv">
+    <span class="qmark">«</span>
+    <p class="qtxt">Liberté, Égalité, Fraternité — les idéaux nés de la Révolution française qui résonnèrent à travers le monde et transformèrent à jamais le cours de l'histoire de l'humanité.</p>
+    <p class="qcite">— La devise de la République française, née en 1789</p>
+  </div>
+</div>
+
+<!-- ── CHAPITRE 3 ── -->
+<div class="chap-divider"><div class="cd-num">03</div><div class="cd-line"></div><div class="cd-era">1789 – 1815 · La Révolution et Napoléon</div></div>
+
+<section class="sec" id="revolution" style="border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 3 · 1789 – 1815</div>
+    <h2 class="stitle rv">La Révolution française<br><em>et l'Ère napoléonienne</em></h2>
+    <p class="slead rv">Les inégalités sociales, la crise économique et les idées des Lumières déclenchèrent l'événement politique le plus transformateur de l'histoire moderne — donnant naissance aux idéaux qui inspirèrent les démocraties du monde entier.</p>
+
+    <div class="chap">
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#1a1714"/>
+          <rect y="200" width="280" height="150" fill="#2a2018" opacity=".8"/>
+          <ellipse cx="30" cy="310" rx="12" ry="40" fill="rgba(0,0,0,.6)"/>
+          <ellipse cx="55" cy="305" rx="11" ry="45" fill="rgba(0,0,0,.55)"/>
+          <ellipse cx="80" cy="312" rx="12" ry="38" fill="rgba(0,0,0,.6)"/>
+          <ellipse cx="105" cy="308" rx="11" ry="42" fill="rgba(0,0,0,.55)"/>
+          <ellipse cx="175" cy="312" rx="12" ry="38" fill="rgba(0,0,0,.6)"/>
+          <ellipse cx="200" cy="306" rx="11" ry="44" fill="rgba(0,0,0,.55)"/>
+          <ellipse cx="225" cy="310" rx="12" ry="40" fill="rgba(0,0,0,.6)"/>
+          <ellipse cx="250" cy="308" rx="11" ry="42" fill="rgba(0,0,0,.55)"/>
+          <line x1="140" y1="280" x2="140" y2="110" stroke="#8a7050" stroke-width="3"/>
+          <rect x="140" y="110" width="22" height="46" fill="#002395"/>
+          <rect x="162" y="110" width="22" height="46" fill="#fff" opacity=".9"/>
+          <rect x="184" y="110" width="22" height="46" fill="#ED2939"/>
+          <ellipse cx="140" cy="108" rx="14" ry="20" fill="#e8820a" opacity=".9"/>
+          <ellipse cx="140" cy="103" rx="10" ry="16" fill="#f5a820" opacity=".9"/>
+          <ellipse cx="140" cy="98" rx="7" ry="12" fill="#ffd840" opacity=".9"/>
+          <ellipse cx="140" cy="94" rx="4" ry="8" fill="#fff" opacity=".7"/>
+          <ellipse cx="140" cy="108" rx="35" ry="35" fill="#e8820a" opacity=".12"/>
+          <rect x="60" y="240" width="50" height="60" fill="rgba(255,253,247,.07)" stroke="rgba(255,253,247,.14)" stroke-width="1"/>
+          <rect x="55" y="228" width="15" height="28" fill="rgba(255,253,247,.07)" stroke="rgba(255,253,247,.14)" stroke-width="1"/>
+          <rect x="90" y="228" width="15" height="28" fill="rgba(255,253,247,.07)" stroke="rgba(255,253,247,.14)" stroke-width="1"/>
+          <text x="140" y="338" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".2em" fill="rgba(255,253,247,.32)">LA RÉVOLUTION · 14 JUILLET 1789</text>
+        </svg>
+      </div>
+
+      <div class="txt-col rv">
+        <h3>Le Déclenchement de la Révolution</h3>
+        <p>En 1789, un royaume ruiné par des guerres coûteuses et un système fiscal injuste — où le clergé et la noblesse jouissaient de privilèges tandis que le tiers état supportait l'essentiel des impôts — éclata enfin. Les idées des Lumières avaient profondément transformé les mentalités, remettant en question l'autorité absolue du roi.</p>
+        <p>L'année 1789 fut celle des grands bouleversements : la convocation des États généraux, le serment du Jeu de Paume, et surtout la <em>prise de la Bastille le 14 juillet</em> — symbole éternel de la liberté conquise sur la tyrannie. L'Assemblée nationale adopta ensuite la Déclaration des droits de l'homme et du citoyen, affirmant des principes universels qui inspirèrent les démocraties modernes du monde entier.</p>
+        <h3>La Terreur et son Héritage</h3>
+        <p>La Révolution prit rapidement un tournant plus radical. Entre 1793 et 1794, la Terreur s'installa sous Robespierre — des milliers de personnes, dont le roi Louis XVI et la reine Marie-Antoinette, furent guillotinées. Malgré ces excès, cette période permit des avancées sociales majeures : la laïcisation de l'État, l'égalité civile et le principe de souveraineté populaire.</p>
+        <h3>L'Ascension de Napoléon</h3>
+        <p>De ce chaos politique émergea <em>Napoléon Bonaparte</em> — général talentueux qui prit le pouvoir par un coup d'État en 1799. Devenu Empereur en 1804, il introduisit des réformes profondes et durables : le <em>Code civil</em> (qui influença les systèmes juridiques de plus de 70 pays), la création des lycées, la Banque de France, et une administration centralisée. Après la désastreuse campagne de Russie (1812) et sa défaite finale à Waterloo en 1815, Napoléon fut exilé à Sainte-Hélène, laissant une empreinte indélébile sur la France et l'Europe.</p>
+        <div class="pull"><p>« L'héritage de Napoléon fut contradictoire mais immense : il préserva les idéaux révolutionnaires à travers le droit et l'administration, tout en restaurant un pouvoir autoritaire — une tension qui définit encore la politique française aujourd'hui. »</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHAPITRE 4 ── -->
+<div class="chap-divider"><div class="cd-num">04</div><div class="cd-line"></div><div class="cd-era">1815 – 1914 · Le XIXe Siècle</div></div>
+
+<section class="sec" id="nineteenth" style="background:#f7f3ee;border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 4 · 1815 – 1914</div>
+    <h2 class="stitle rv">Le XIXe Siècle —<br><em>Révolutions, Modernisation et Progrès</em></h2>
+    <p class="slead rv">Malgré des bouleversements politiques constants — alternant entre monarchie, république et empire — la France se modernisa rapidement, transforma Paris en capitale mondiale, et produisit des réalisations extraordinaires en littérature, art et science.</p>
+
+    <div class="chap flip">
+      <div class="txt-col rv">
+        <h3>Instabilité politique : Monarchie, République et Empire</h3>
+        <p>Après la chute de Napoléon, la Restauration vit le retour des Bourbons (Louis XVIII, puis Charles X), qui tentèrent de rétablir les privilèges de l'Ancien Régime. Les aspirations libérales déclenchèrent la révolution de 1830 (les Trois Glorieuses), portant au pouvoir Louis-Philippe. La révolution de 1848 proclama la Deuxième République avec le suffrage universel masculin et l'abolition de l'esclavage dans les colonies — avant que Louis-Napoléon Bonaparte ne réalise un coup d'État et fonde le Second Empire (1852–1870).</p>
+        <p>Sous <em>Napoléon III</em>, le baron Haussmann transforma Paris avec ses grands boulevards, ses parcs et ses immeubles élégants — donnant à la capitale son visage moderne. L'économie connut une croissance remarquable grâce à l'industrialisation et au développement du chemin de fer.</p>
+        <h3>La Belle Époque et la Troisième République</h3>
+        <p>La Troisième République (1870–1940) mit en place d'importantes réformes éducatives avec Jules Ferry, rendant l'école gratuite, laïque et obligatoire. Cette époque fut aussi un âge d'or intellectuel et artistique. Des écrivains comme <em>Victor Hugo</em>, Émile Zola et Gustave Flaubert explorèrent la condition humaine. Les Impressionnistes — Monet, Renoir, Degas — bouleversèrent la vision artistique. <em>Louis Pasteur</em> développa la théorie des germes et des vaccins ; <em>Marie Curie</em> découvrit la radioactivité et reçut deux prix Nobel.</p>
+        <div class="pull"><p>« Paris accueillit l'Exposition universelle de 1889, pour laquelle fut construite la Tour Eiffel. La France bâtissait également l'un des plus grands empires coloniaux du monde — s'étendant à travers l'Afrique, l'Indochine, le Pacifique et au-delà. »</p></div>
+      </div>
+
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#e0d4c0"/>
+          <rect width="280" height="200" fill="#c8d8e8"/>
+          <rect x="28" y="195" width="82" height="60" fill="#5a5040" opacity=".7"/>
+          <polygon points="48,195 68,158 88,195" fill="#5a5040" opacity=".7"/>
+          <polygon points="88,195 108,158 128,195" fill="#5a5040" opacity=".7"/>
+          <rect x="58" y="148" width="6" height="18" fill="#5a5040" opacity=".7"/>
+          <rect x="98" y="148" width="6" height="18" fill="#5a5040" opacity=".7"/>
+          <polygon points="175,255 185,200 195,200 205,255" fill="rgba(90,80,60,.62)"/>
+          <polygon points="178,200 183,170 192,170 197,200" fill="rgba(90,80,60,.62)"/>
+          <polygon points="181,170 185,148 190,148 194,170" fill="rgba(90,80,60,.62)"/>
+          <rect x="184" y="140" width="5" height="10" fill="rgba(90,80,60,.62)"/>
+          <rect x="171" y="200" width="37" height="5" rx="1" fill="rgba(90,80,60,.7)"/>
+          <rect x="177" y="170" width="25" height="4" rx="1" fill="rgba(90,80,60,.7)"/>
+          <rect x="170" y="260" width="90" height="90" fill="#c0a87a" stroke="#9a8050" stroke-width="1"/>
+          <rect x="174" y="264" width="12" height="16" rx="1" fill="#8ab0c8" opacity=".5"/>
+          <rect x="190" y="264" width="12" height="16" rx="1" fill="#8ab0c8" opacity=".5"/>
+          <rect x="206" y="264" width="12" height="16" rx="1" fill="#8ab0c8" opacity=".5"/>
+          <rect x="222" y="264" width="12" height="16" rx="1" fill="#8ab0c8" opacity=".5"/>
+          <ellipse cx="140" cy="285" rx="140" ry="20" fill="#7a9ab0" opacity=".35"/>
+          <rect x="18" y="305" width="80" height="18" rx="3" fill="#4a4030" opacity=".8"/>
+          <rect x="16" y="298" width="30" height="10" rx="2" fill="#4a4030" opacity=".8"/>
+          <circle cx="30" cy="323" r="7" fill="#3a3020" opacity=".8"/>
+          <circle cx="58" cy="323" r="7" fill="#3a3020" opacity=".8"/>
+          <circle cx="86" cy="323" r="7" fill="#3a3020" opacity=".8"/>
+          <circle cx="23" cy="290" r="6" fill="rgba(255,253,247,.38)"/>
+          <circle cx="33" cy="283" r="8" fill="rgba(255,253,247,.32)"/>
+          <ellipse cx="232" cy="78" rx="22" ry="28" fill="#c8472b" opacity=".68"/>
+          <rect x="227" y="105" width="10" height="8" rx="1" fill="#8a6030" opacity=".65"/>
+          <text x="140" y="340" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".18em" fill="rgba(70,60,40,.48)">PARIS · BELLE ÉPOQUE · 1889</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHAPITRE 5 ── -->
+<div class="chap-divider"><div class="cd-num">05</div><div class="cd-line"></div><div class="cd-era">1914 – 1945 · Les Guerres Mondiales</div></div>
+
+<section class="sec" id="worldwars" style="border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 5 · 1914 – 1945</div>
+    <h2 class="stitle rv">Le XXe Siècle —<br><em>Deux Guerres Mondiales et la Libération</em></h2>
+    <p class="slead rv">La France souffrit de pertes dévastatrices lors des deux guerres mondiales — mais le courage de la Résistance française et la libération par les Alliés restaurèrent la République et renouvelèrent ses idéaux fondateurs.</p>
+
+    <div class="chap">
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#2a2420"/>
+          <rect width="280" height="180" fill="#1a1410"/>
+          <line x1="0" y1="200" x2="280" y2="200" stroke="rgba(180,160,120,.2)" stroke-width="1"/>
+          <ellipse cx="60" cy="270" rx="28" ry="12" fill="rgba(0,0,0,.4)"/>
+          <ellipse cx="140" cy="290" rx="35" ry="14" fill="rgba(0,0,0,.35)"/>
+          <ellipse cx="220" cy="265" rx="25" ry="10" fill="rgba(0,0,0,.38)"/>
+          <rect x="28" y="195" width="6" height="20" rx="2" fill="rgba(180,160,100,.5)"/>
+          <ellipse cx="31" cy="193" rx="5" ry="4" fill="rgba(180,160,100,.5)"/>
+          <rect x="48" y="192" width="6" height="22" rx="2" fill="rgba(180,160,100,.45)"/>
+          <ellipse cx="51" cy="190" rx="5" ry="4" fill="rgba(180,160,100,.45)"/>
+          <rect x="200" y="194" width="6" height="20" rx="2" fill="rgba(180,160,100,.5)"/>
+          <ellipse cx="203" cy="192" rx="5" ry="4" fill="rgba(180,160,100,.5)"/>
+          <line x1="140" y1="290" x2="140" y2="110" stroke="rgba(180,160,100,.6)" stroke-width="2.5"/>
+          <rect x="140" y="110" width="20" height="42" fill="#002395"/>
+          <rect x="160" y="110" width="20" height="42" fill="#fff" opacity=".85"/>
+          <rect x="180" y="110" width="20" height="42" fill="#ED2939"/>
+          <ellipse cx="80" cy="180" rx="30" ry="18" fill="#c8722b" opacity=".22"/>
+          <ellipse cx="210" cy="175" rx="25" ry="16" fill="#c8722b" opacity=".18"/>
+          <path d="M50,80 Q70,72 90,80 Q70,78 50,80Z" fill="rgba(200,180,140,.3)"/>
+          <line x1="70" y1="76" x2="70" y2="70" stroke="rgba(200,180,140,.3)" stroke-width="1.2"/>
+          <path d="M190,60 Q210,52 230,60 Q210,58 190,60Z" fill="rgba(200,180,140,.3)"/>
+          <text x="140" y="338" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".18em" fill="rgba(200,180,140,.3)">VERDUN 1916 · NORMANDIE 1944</text>
+        </svg>
+      </div>
+
+      <div class="txt-col rv">
+        <h3>La Grande Guerre (1914–1918)</h3>
+        <p>Le XXe siècle débuta sous le signe du progrès industriel, mais fut bientôt consumé par la catastrophe de la Première Guerre mondiale. La France se trouvait au cœur du front occidental — le théâtre de combat le plus meurtrier de l'histoire humaine. Les batailles de <em>Verdun</em> et de la Somme, menées dans la boue des tranchées sous l'artillerie et les gaz toxiques, coûtèrent des millions de vies françaises. Le pays sortit victorieux en 1918 mais profondément meurtri — son territoire dévasté, sa population en deuil.</p>
+        <h3>La Seconde Guerre mondiale et l'Occupation (1939–1944)</h3>
+        <p>À peine deux décennies plus tard, la guerre revint. En 1940, la France fut rapidement vaincue par l'Allemagne nazie. Le pays fut occupé, et le <em>régime de Vichy</em> sous le maréchal Pétain collabora avec l'ennemi. Une grande partie du territoire fut sous contrôle allemand direct, tandis que la population subissait répression, censure et déportations.</p>
+        <p>Pourtant, dans cette période sombre, la <em>Résistance française</em> s'organisa — à travers des réseaux clandestins intérieurs et à l'extérieur, menée depuis Londres par <em>Charles de Gaulle</em>, qui lança son célèbre Appel du 18 juin 1940 : <em>« La France a perdu une bataille. Mais la France n'a pas perdu la guerre. »</em></p>
+        <p>En 1944, le <em>Débarquement de Normandie</em> du 6 juin — la plus grande opération amphibie de l'histoire — commença la libération. La libération de Paris en août 1944 symbolisa le retour de la République et de la souveraineté nationale.</p>
+        <div class="pull"><p>« La Résistance française — hommes et femmes de toutes origines — devint l'un des symboles les plus puissants du courage face à l'oppression dans l'histoire du XXe siècle. »</p></div>
+      </div>
+    </div>
+
+    <div class="facts-strip rv" style="margin-top:3rem">
+      <div class="fs-item"><div class="fs-tag">1916</div><div class="fs-title">Bataille de Verdun</div><div class="fs-body">L'une des batailles les plus longues et dévastatrices de la Première Guerre mondiale — ~700 000 victimes en 10 mois. Symbole du sacrifice français.</div></div>
+      <div class="fs-item"><div class="fs-tag">18 juin 1940</div><div class="fs-title">L'Appel du Général de Gaulle</div><div class="fs-body">Depuis Londres, de Gaulle lança son appel à résister — refusant d'accepter la défaite et galvanisant les Forces françaises libres.</div></div>
+      <div class="fs-item"><div class="fs-tag">6 juin 1944</div><div class="fs-title">Le Débarquement en Normandie</div><div class="fs-body">La plus grande invasion maritime de l'histoire. Les forces alliées débarquèrent sur les plages de Normandie, amorçant la libération de la France.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHAPITRE 6 ── -->
+<div class="chap-divider"><div class="cd-num">06</div><div class="cd-line"></div><div class="cd-era">1945 – Aujourd'hui · La France Contemporaine</div></div>
+
+<section class="sec" id="contemporary" style="background:#f7f3ee;border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 6 · 1945 – Aujourd'hui</div>
+    <h2 class="stitle rv">La France Contemporaine —<br><em>Reconstruction, Démocratie et Rôle Mondial</em></h2>
+    <p class="slead rv">Après la dévastation de la guerre, la France se reconstruisit rapidement, accorda l'indépendance à ses colonies, fonda une République plus solide et émergea comme pierre angulaire de l'unité européenne et de la diplomatie mondiale.</p>
+
+    <div class="chap flip">
+      <div class="txt-col rv">
+        <h3>Reconstruction et Décolonisation</h3>
+        <p>Après la Seconde Guerre mondiale, la France se concentra sur une reconstruction rapide et une reprise économique — aidée par le Plan Marshall. La Quatrième République (1946–1958), malgré son instabilité politique, connut une croissance économique impressionnante. Cependant, elle fut déchirée par les guerres de décolonisation — d'abord en Indochine, puis la brutale <em>Guerre d'Algérie (1954–1962)</em>.</p>
+        <p>En 1958, face à la crise algérienne et à la paralysie gouvernementale, Charles de Gaulle fut rappelé au pouvoir. Il fonda la <em>Cinquième République</em>, avec une nouvelle constitution renforçant considérablement les pouvoirs du président — le système qui gouverne la France jusqu'à aujourd'hui. Les accords d'Évian en 1962 mirent fin à la Guerre d'Algérie, accordant l'indépendance après des années de conflits sanglants.</p>
+        <h3>Mai 1968 et la Transformation Sociale</h3>
+        <p>Les années 1960 et 1970 furent celles d'une transformation sociale profonde. En <em>mai 1968</em>, de massives manifestations étudiantes et ouvrières secouèrent la France — un rejet de l'autorité et une aspiration à plus de liberté. Ce mouvement transforma la société française : libéralisant les mœurs, modernisant l'éducation, et consacrant de nouvelles valeurs d'égalité des sexes et de liberté d'expression.</p>
+        <h3>La France dans le Monde Aujourd'hui</h3>
+        <p>La France devint membre fondateur de l'Union européenne et œuvra pour l'intégration continentale et la paix durable. Membre permanent du Conseil de sécurité de l'ONU, elle joue un rôle majeur dans le maintien de la paix, la lutte contre le terrorisme, la diplomatie climatique et la défense des droits de l'homme à l'échelle mondiale.</p>
+        <div class="pull"><p>« La France fut membre fondateur de la Communauté européenne du charbon et de l'acier en 1951 — la graine de l'Union européenne actuelle — animée par la conviction que l'intégration économique était la garantie la plus sûre d'une paix durable. »</p></div>
+      </div>
+
+      <div class="vis-col rv" style="aspect-ratio:4/5">
+        <svg viewBox="0 0 280 350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="280" height="350" fill="#e8f0e8"/>
+          <rect width="280" height="160" fill="#c8dce8"/>
+          <circle cx="140" cy="80" r="40" fill="none" stroke="#002395" stroke-width="1" opacity=".2"/>
+          <text x="140" y="58"  text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="163" y="64" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="174" y="84" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="163" y="104" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="140" y="112" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="117" y="104" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="106" y="84" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <text x="117" y="64" text-anchor="middle" font-size="8" fill="#ffcc00">★</text>
+          <rect x="94" y="165" width="92" height="120" fill="#7a9ab0" stroke="#5a7a90" stroke-width="1.2"/>
+          <rect x="108" y="165" width="8" height="120" fill="rgba(255,255,255,.15)"/>
+          <rect x="122" y="165" width="8" height="120" fill="rgba(255,255,255,.15)"/>
+          <rect x="136" y="165" width="8" height="120" fill="rgba(255,255,255,.15)"/>
+          <rect x="150" y="165" width="8" height="120" fill="rgba(255,255,255,.15)"/>
+          <rect x="164" y="165" width="8" height="120" fill="rgba(255,255,255,.15)"/>
+          <line x1="94" y1="185" x2="186" y2="185" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+          <line x1="94" y1="205" x2="186" y2="205" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+          <line x1="94" y1="225" x2="186" y2="225" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+          <line x1="94" y1="245" x2="186" y2="245" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+          <line x1="94" y1="265" x2="186" y2="265" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+          <line x1="104" y1="160" x2="104" y2="140" stroke="#9a9a9a" stroke-width="1.2"/>
+          <line x1="140" y1="160" x2="140" y2="138" stroke="#9a9a9a" stroke-width="1.2"/>
+          <line x1="176" y1="160" x2="176" y2="140" stroke="#9a9a9a" stroke-width="1.2"/>
+          <rect x="104" y="140" width="5" height="8" fill="#002395"/>
+          <rect x="109" y="140" width="4" height="8" fill="#fff"/>
+          <rect x="113" y="140" width="5" height="8" fill="#ED2939"/>
+          <rect x="140" y="138" width="16" height="8" fill="#003399"/>
+          <rect x="156" y="138" width="6" height="8" fill="#ffcc00"/>
+          <line x1="38" y1="290" x2="38" y2="220" stroke="#8a9a8a" stroke-width="2"/>
+          <line x1="38" y1="220" x2="20" y2="200" stroke="#8a9a8a" stroke-width="1.5"/>
+          <line x1="38" y1="220" x2="56" y2="200" stroke="#8a9a8a" stroke-width="1.5"/>
+          <line x1="38" y1="220" x2="38" y2="196" stroke="#8a9a8a" stroke-width="1.5"/>
+          <line x1="228" y1="295" x2="228" y2="228" stroke="#8a9a8a" stroke-width="2"/>
+          <line x1="228" y1="228" x2="210" y2="208" stroke="#8a9a8a" stroke-width="1.5"/>
+          <line x1="228" y1="228" x2="246" y2="208" stroke="#8a9a8a" stroke-width="1.5"/>
+          <line x1="228" y1="228" x2="228" y2="204" stroke="#8a9a8a" stroke-width="1.5"/>
+          <rect x="0" y="290" width="280" height="60" fill="#9ab09a" opacity=".3"/>
+          <text x="140" y="340" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="500" letter-spacing=".18em" fill="rgba(40,70,40,.45)">FRANCE CONTEMPORAINE · UE · ONU</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK BAND -->
+<div class="dband">
+  <div class="dband-inner">
+    <div class="dc rv"><div class="dc-tag">Union Européenne</div><div class="dc-title">Membre Fondateur de l'Europe</div><div class="dc-body">La France fut membre fondateur de la Communauté européenne du charbon et de l'acier en 1951 et contribua à construire le cadre de l'UE — animée par la conviction que l'unité économique garantit la paix durable.</div></div>
+    <div class="dc rv"><div class="dc-tag">Cinquième République</div><div class="dc-title">Stabilité et Réforme Démocratique</div><div class="dc-body">La constitution de 1958 de de Gaulle créa la Cinquième République avec une présidence renforcée, mettant fin à l'instabilité politique. Elle accorda l'indépendance aux colonies et remodela le rôle mondial de la France via la francophonie.</div></div>
+    <div class="dc rv"><div class="dc-tag">Leadership Mondial Aujourd'hui</div><div class="dc-title">Diplomatie, Climat et Innovation</div><div class="dc-body">La France joue un rôle vital dans la diplomatie mondiale, les efforts environnementaux et la coopération internationale — ayant accueilli les Accords de Paris sur le Climat (2015) et restant membre permanent du Conseil de sécurité de l'ONU.</div></div>
+  </div>
+</div>
+
+<!-- CHRONOLOGIE -->
+<section class="sec" id="chronologie" style="background:#f7f3ee">
+  <div class="inner">
+    <div class="kicker rv">Référence Rapide</div>
+    <h2 class="stitle rv">Chronologie complète<br><em>en un coup d'œil</em></h2>
+    <p class="slead rv">Tous les moments clés de l'histoire de France — des Francs à aujourd'hui — en un aperçu clair.</p>
+    <div class="tlt">
+      <div class="tc rv"><div class="ty">~500 ap. J.-C.</div><div class="te">Haut Moyen Âge</div><div class="tt">Le Royaume des Francs</div><div class="tb">Clovis Iᵉʳ unifie les Francs, se convertit au christianisme et s'allie à l'Église — posant les fondations du royaume de France.</div></div>
+      <div class="tc rv"><div class="ty">800 ap. J.-C.</div><div class="te">Ère carolingienne</div><div class="tt">Charlemagne couronné Empereur</div><div class="tb">Couronné par le pape Léon III à Rome. Son empire couvre une grande partie de l'Europe occidentale et déclenche la Renaissance carolingienne.</div></div>
+      <div class="tc rv"><div class="ty">1337–1453</div><div class="te">Crise médiévale</div><div class="tt">La Guerre de Cent Ans</div><div class="tb">Une longue guerre contre l'Angleterre. Jeanne d'Arc lève le siège d'Orléans en 1429, devenant l'éternel symbole du courage français.</div></div>
+      <div class="tc rv"><div class="ty">1515–1547</div><div class="te">Renaissance</div><div class="tt">François Iᵉʳ et la Renaissance</div><div class="tb">Léonard de Vinci arrive en France. L'imprimerie, le Collège de France et la pensée humaniste transforment le royaume.</div></div>
+      <div class="tc rv"><div class="ty">1572</div><div class="te">Guerres de Religion</div><div class="tt">La Saint-Barthélemy</div><div class="tb">Des milliers de protestants massacrés. Les guerres civiles religieuses ne prirent fin qu'avec l'Édit de Nantes d'Henri IV en 1598.</div></div>
+      <div class="tc rv"><div class="ty">1643–1715</div><div class="te">Classicisme</div><div class="tt">Louis XIV — Le Roi Soleil</div><div class="tb">Apogée de la monarchie absolue. Construction du château de Versailles. La France devient la plus grande puissance culturelle et politique d'Europe.</div></div>
+      <div class="tc rv"><div class="ty">1789</div><div class="te">Révolution</div><div class="tt">La Révolution française</div><div class="tb">La Bastille tombe le 14 juillet. La Déclaration des droits de l'homme est proclamée. La monarchie est abolie. La République est née.</div></div>
+      <div class="tc rv"><div class="ty">1804–1815</div><div class="te">Empire</div><div class="tt">Napoléon Bonaparte</div><div class="tb">Napoléon se couronne Empereur, instaure le Code civil, conquiert une grande partie de l'Europe — puis tombe à Waterloo en 1815.</div></div>
+      <div class="tc rv"><div class="ty">1870–1914</div><div class="te">Belle Époque</div><div class="tt">Modernisation et Troisième République</div><div class="tb">Haussmann reconstruit Paris. Tour Eiffel construite (1889). Pasteur, Curie, Monet, Zola — la France domine science, art et littérature.</div></div>
+      <div class="tc rv"><div class="ty">1914–1918</div><div class="te">Première Guerre mondiale</div><div class="tt">La Grande Guerre</div><div class="tb">La France subit des millions de victimes sur le front occidental. Verdun devient le symbole du sacrifice et de la souffrance d'une génération.</div></div>
+      <div class="tc rv"><div class="ty">1940–1944</div><div class="te">Seconde Guerre mondiale</div><div class="tt">Occupation et Libération</div><div class="tb">L'Allemagne nazie occupe la France. La Résistance combat. Le Débarquement (juin 1944) commence la libération. Paris libre en août 1944.</div></div>
+      <div class="tc rv"><div class="ty">1958</div><div class="te">Cinquième République</div><div class="tt">De Gaulle et la Cinquième République</div><div class="tb">Une nouvelle constitution renforce le pouvoir présidentiel. La France se décolonise, rejoint l'Europe et redéfinit son rôle mondial.</div></div>
+      <div class="tc rv"><div class="ty">1968</div><div class="te">Changement social</div><div class="tt">Les événements de Mai 1968</div><div class="tb">Étudiants et ouvriers descendent dans les rues. Le mouvement transforme la société française et modernise l'éducation et les mœurs.</div></div>
+      <div class="tc rv"><div class="ty">2015</div><div class="te">Leadership climatique</div><div class="tt">Les Accords de Paris sur le Climat</div><div class="tb">La France accueille la Conférence de l'ONU sur le Climat, produisant l'Accord de Paris — le traité environnemental le plus important du monde.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 2 -->
+<div class="qband">
+  <div style="max-width:800px;margin:0 auto" class="rv">
+    <span class="qmark">«</span>
+    <p class="qtxt">La France ne peut être la France sans la grandeur — elle doit toujours viser plus haut, car la médiocrité ne serait pas digne d'un tel peuple.</p>
+    <p class="qcite">— Charles de Gaulle, Président de la République française (1959–1969)</p>
+  </div>
+</div>
+
+<!-- CULTURE -->
+<section class="sec" id="culture" style="border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Chapitre 7 · Culture et Influence Mondiale</div>
+    <h2 class="stitle rv">L'Héritage culturel de la France<br><em>et son Rayonnement Mondial</em></h2>
+    <p class="slead rv">Au-delà des guerres et de la politique, la France est mondialement reconnue pour ses immenses contributions à l'art, la science, la philosophie, la gastronomie, la mode et la langue — façonnant la civilisation humaine sur tous les continents.</p>
+
+    <div class="cult-grid rv">
+      <div class="cc"><div class="cc-icon">🎨</div><div class="cc-title">Art et Impressionnisme</div><div class="cc-body">Monet, Renoir et Degas révolutionnèrent la peinture avec l'Impressionnisme. Braque et Picasso créèrent le Cubisme à Paris. La France a reécrit l'histoire de l'art.</div></div>
+      <div class="cc"><div class="cc-icon">🎬</div><div class="cc-title">Cinéma et Littérature</div><div class="cc-body">Les frères Lumière inventèrent le cinéma à Lyon (1895). La Nouvelle Vague — Godard, Truffaut — transforma le cinéma mondial. Hugo, Zola, Camus écrivirent pour l'éternité.</div></div>
+      <div class="cc"><div class="cc-icon">👗</div><div class="cc-title">Mode et Design</div><div class="cc-body">Paris est la capitale mondiale de la mode. Chanel, Dior, Louis Vuitton, Hermès — les maisons françaises définissent l'élégance et le luxe sur toute la planète.</div></div>
+      <div class="cc"><div class="cc-icon">🍽️</div><div class="cc-title">La Gastronomie</div><div class="cc-body">La gastronomie française est reconnue par l'UNESCO comme Patrimoine Culturel Immatériel. Elle a façonné les traditions culinaires et les standards de la grande cuisine dans le monde entier.</div></div>
+      <div class="cc"><div class="cc-icon">🔬</div><div class="cc-title">Science et Technologie</div><div class="cc-body">Pasteur découvrit la théorie des germes et les vaccins. Marie Curie (deux prix Nobel) élucida la radioactivité. Aujourd'hui, la France mène dans l'aérospatiale (Airbus, Ariane), le nucléaire et la médecine.</div></div>
+      <div class="cc"><div class="cc-icon">📖</div><div class="cc-title">Philosophie et Droits de l'Homme</div><div class="cc-body">Descartes, Voltaire, Rousseau, Sartre et Simone de Beauvoir ont façonné la pensée politique moderne, l'éthique et l'existentialisme — inspirant des révolutions démocratiques à travers le monde.</div></div>
+    </div>
+
+    <div class="rv" style="margin-top:3rem">
+      <p style="font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#c8472b;margin-bottom:1rem">Grandes Figures françaises qui ont changé le monde</p>
+    </div>
+    <div class="thinkers rv">
+      <div class="tk"><div class="tk-icon">💡</div><div class="tk-name">Descartes</div><div class="tk-sub">Père de la philosophie moderne et des mathématiques</div></div>
+      <div class="tk"><div class="tk-icon">✍️</div><div class="tk-name">Victor Hugo</div><div class="tk-sub">Les Misérables — justice et âme humaine</div></div>
+      <div class="tk"><div class="tk-icon">🔭</div><div class="tk-name">Marie Curie</div><div class="tk-sub">Radioactivité · 2 Prix Nobel</div></div>
+      <div class="tk"><div class="tk-icon">🧫</div><div class="tk-name">Louis Pasteur</div><div class="tk-sub">Théorie des germes · vaccins · médecine moderne</div></div>
+      <div class="tk"><div class="tk-icon">🖼️</div><div class="tk-name">Claude Monet</div><div class="tk-sub">Père de l'Impressionnisme</div></div>
+      <div class="tk"><div class="tk-icon">🕊️</div><div class="tk-name">Jean-Paul Sartre</div><div class="tk-sub">Existentialisme et pensée politique</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="sec" id="conclusion" style="background:#f7f3ee;border-bottom:2px solid #1a1714">
+  <div class="inner">
+    <div class="kicker rv">Conclusion</div>
+    <h2 class="stitle rv">Un Héritage de Résilience,<br><em>de Transformation et d'Innovation</em></h2>
+    <p class="slead rv">Des royaumes médiévaux à la démocratie moderne, le voyage de la France a changé les systèmes politiques, façonné la culture mondiale et inspiré la liberté et l'égalité à travers les nations. Ses révolutions ont résonné dans le monde entier. Ses idées ont survécu aux empires. Sa culture continue de fasciner l'humanité.</p>
+    <div class="conc-grid rv" style="margin-top:3rem">
+      <div class="cg"><div class="cg-n">2 000+</div><div class="cg-l">Ans d'histoire française enregistrée</div></div>
+      <div class="cg"><div class="cg-n">1789</div><div class="cg-l">L'année où la Révolution changea le monde</div></div>
+      <div class="cg"><div class="cg-n">300M+</div><div class="cg-l">Francophones sur 5 continents</div></div>
+      <div class="cg"><div class="cg-n">29</div><div class="cg-l">Pays où le français est langue officielle</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div style="font-size:1.7rem;margin-bottom:.8rem">🇫🇷</div>
+    <div class="fttl">Merci &amp;<br><em>Vive la France</em>&nbsp;!</div>
+  </div>
+  <div class="fright">
+    <p>Une Présentation de Séminaire<br><strong>Histoire de France — Un Voyage à Travers les Siècles</strong></p>
+    <p style="margin-top:.8rem">Sources :<br><strong>Encyclopædia Britannica · UNESCO</strong><br><strong>Ministère français de la Culture · History.com</strong><br><strong>Bibliothèque nationale de France</strong></p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 5 * 0.07) + 's';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
